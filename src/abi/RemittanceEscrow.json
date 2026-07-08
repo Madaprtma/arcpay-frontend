@@ -1,0 +1,106 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [{ "name": "_usdc", "type": "address" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "sendRemittance",
+    "inputs": [
+      { "name": "recipient", "type": "address" },
+      { "name": "amount", "type": "uint256" },
+      { "name": "memo", "type": "string" }
+    ],
+    "outputs": [{ "name": "txId", "type": "bytes32" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "sendPayrollBatch",
+    "inputs": [
+      { "name": "recipients", "type": "address[]" },
+      { "name": "amounts", "type": "uint256[]" },
+      { "name": "memo", "type": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "estimateFee",
+    "inputs": [{ "name": "amount", "type": "uint256" }],
+    "outputs": [
+      { "name": "fee", "type": "uint256" },
+      { "name": "netAmount", "type": "uint256" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getSenderHistory",
+    "inputs": [{ "name": "sender", "type": "address" }],
+    "outputs": [{ "name": "", "type": "bytes32[]" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getTransaction",
+    "inputs": [{ "name": "txId", "type": "bytes32" }],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          { "name": "sender", "type": "address" },
+          { "name": "recipient", "type": "address" },
+          { "name": "amount", "type": "uint256" },
+          { "name": "fee", "type": "uint256" },
+          { "name": "memo", "type": "string" },
+          { "name": "txType", "type": "uint8" },
+          { "name": "status", "type": "uint8" },
+          { "name": "timestamp", "type": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "totalFeesCollected",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "feePercent",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "RemittanceSent",
+    "inputs": [
+      { "name": "txId", "type": "bytes32", "indexed": true },
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "recipient", "type": "address", "indexed": true },
+      { "name": "amount", "type": "uint256", "indexed": false },
+      { "name": "fee", "type": "uint256", "indexed": false },
+      { "name": "memo", "type": "string", "indexed": false },
+      { "name": "timestamp", "type": "uint256", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "PayrollBatchSent",
+    "inputs": [
+      { "name": "employer", "type": "address", "indexed": true },
+      { "name": "recipients", "type": "address[]", "indexed": false },
+      { "name": "amounts", "type": "uint256[]", "indexed": false },
+      { "name": "memo", "type": "string", "indexed": false },
+      { "name": "timestamp", "type": "uint256", "indexed": false }
+    ]
+  }
+]
